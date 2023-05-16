@@ -31,19 +31,19 @@ public class CustomerDetails extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         cusname = new javax.swing.JTextField();
         tel = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         registerBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         search_tel = new javax.swing.JTextField();
+        loginBtn = new javax.swing.JButton();
         searchBtn = new javax.swing.JButton();
+        updateBtn = new javax.swing.JButton();
+        cn = new javax.swing.JTextField();
+        tn = new javax.swing.JTextField();
+        em = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -52,31 +52,34 @@ public class CustomerDetails extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("New Customer");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, -1));
+        cusname.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        jPanel1.add(cusname, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 280, -1));
+        cusname.setOpaque(false);
+        cusname.setBorder(null);
+        cusname.setBackground(null);
 
-        jLabel2.setText("Existing Customer");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 110, -1, -1));
+        tel.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        jPanel1.add(tel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 280, -1));
+        tel.setOpaque(false);
+        tel.setBorder(null);
+        tel.setBackground(null);
 
-        jLabel3.setText("Customer Name :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, -1));
+        email.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 406, 280, -1));
+        email.setOpaque(false);
+        email.setBorder(null);
+        email.setBackground(null);
 
-        jLabel4.setText("Tel No               :");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, -1, -1));
-
-        jLabel5.setText("Email                :");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, -1));
-        jPanel1.add(cusname, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 160, -1));
-        jPanel1.add(tel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 160, -1));
-        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 160, -1));
-
-        registerBtn.setText("Register");
+        registerBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.png"))); // NOI18N
         registerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, -1));
+        jPanel1.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, -1, -1));
+        registerBtn.setOpaque(false);
+        registerBtn.setContentAreaFilled(false);
+        registerBtn.setBorderPainted(false);
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 51, 255));
@@ -92,19 +95,67 @@ public class CustomerDetails extends javax.swing.JFrame {
                 jLabel6MouseExited(evt);
             }
         });
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 410, 20));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 600, 410, 20));
 
-        jLabel7.setText("Tel No :");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, -1, -1));
-        jPanel1.add(search_tel, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 180, 140, -1));
+        search_tel.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        jPanel1.add(search_tel, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 291, 270, -1));
+        search_tel.setOpaque(false);
+        search_tel.setBorder(null);
+        search_tel.setBackground(null);
 
-        searchBtn.setText("search");
+        loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2.png"))); // NOI18N
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, -1, -1));
+        loginBtn.setOpaque(false);
+        loginBtn.setContentAreaFilled(false);
+        loginBtn.setBorderPainted(false);
+
+        searchBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4 copy.png"))); // NOI18N
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(searchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 180, -1, -1));
+        jPanel1.add(searchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1147, 286, -1, -1));
+        searchBtn.setOpaque(false);
+        searchBtn.setContentAreaFilled(false);
+        searchBtn.setBorderPainted(false);
+
+        updateBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update.png"))); // NOI18N
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(875, 470, -1, -1));
+        updateBtn.setOpaque(false);
+        updateBtn.setContentAreaFilled(false);
+        updateBtn.setBorderPainted(false);
+
+        cn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jPanel1.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 350, 240, -1));
+        cn.setOpaque(false);
+        cn.setBorder(null);
+        cn.setBackground(null);
+
+        tn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jPanel1.add(tn, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 392, 240, -1));
+        tn.setOpaque(false);
+        tn.setBorder(null);
+        tn.setBackground(null);
+
+        em.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 437, 240, -1));
+        em.setOpaque(false);
+        em.setBorder(null);
+        em.setBackground(null);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,62 +181,104 @@ public class CustomerDetails extends javax.swing.JFrame {
         String cmail = email.getText();
         String ctel = tel.getText();
         
-        if(!cname.isEmpty() && !ctel.isEmpty()){
-            if(cmail.isEmpty()){
-                try{
-                    String sql = "INSERT INTO customer (name, telno, email) VALUES ('"+cname+"','"+ctel+"',"+null+")";
-                    pst = conn.prepareStatement(sql);
-                    pst.execute();
-
-                    JOptionPane.showMessageDialog(this, "Customer Registered successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-
-                }catch(SQLException e){
-                    JOptionPane.showMessageDialog(null, e);
-                }finally{
-                        try {
-                            //rs.close();
-                            pst.close();
-                    } catch (SQLException e) {
-                    }
-                }
-            }else{
-                try{
-                    String sql = "INSERT INTO customer (name, telno, email) VALUES ('"+cname+"','"+ctel+"','"+cmail+"')";
-                    pst = conn.prepareStatement(sql);
-                    pst.execute();
-
-                    JOptionPane.showMessageDialog(this, "Customer Registered successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-
-                }catch(SQLException e){
-                    JOptionPane.showMessageDialog(null, e);
-                }finally{
-                        try {
-                            //rs.close();
-                            pst.close();
-                    } catch (SQLException e) {
-                    }
-                }
-            }
-            
-            loggedInCusname = cname;
-            
-            CashierScreen cashscreen = new CashierScreen(loggedInUsername,loggedInCusname);
-            cashscreen.setVisible(true);
-            
-            try {
-            conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(AdminLogin.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            this.dispose();
-            
+        if (cname.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Username cannot be empty", "Username Error", JOptionPane.ERROR_MESSAGE);
+        } else if(cname.matches("^[0-9]+$")) {
+            JOptionPane.showMessageDialog(null, "Username cannot contain only numbers.", "Error", JOptionPane.ERROR_MESSAGE);       
+        } else if (cname.length() > 30) {
+            JOptionPane.showMessageDialog(null, "Username should be less than 30 characters", "Username Error", JOptionPane.ERROR_MESSAGE);
+        } else if (cname.contains(" ")) {
+            JOptionPane.showMessageDialog(null, "Username cannot contain spaces", "Username Error", JOptionPane.ERROR_MESSAGE);
+        } else if (!cname.matches("^[a-zA-Z0-9]+$")){
+            JOptionPane.showMessageDialog(null, "Username cannot contain special Charcaters", "Username Error", JOptionPane.ERROR_MESSAGE);
+        }else if (ctel.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Telephone Number cannot be empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        }else if (ctel.length() != 10) {
+            JOptionPane.showMessageDialog(null, "Telephone Number must be 10 numbers", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        }else if (!ctel.matches("07\\d{8}")) {
+            JOptionPane.showMessageDialog(null, "Invalid Telephone Number", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        } else if (!cmail.isEmpty() && !cmail.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")){
+            JOptionPane.showMessageDialog(null, "Invalid Email", "Validation Error", JOptionPane.ERROR_MESSAGE);
         }else{
-            JOptionPane.showMessageDialog(null, "Please Add Name and Tel No!");
+            try{
+                String sql = "select telno from customer where telno='"+ctel+"'";
+                pst = conn.prepareStatement(sql);
+                rs = pst.executeQuery();
+                
+                if (rs.next()) {
+                    JOptionPane.showMessageDialog(null, "This Telephone Number Already Exists!", "Register Error", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    String sql1 = "select email from customer where email='"+cmail+"'";
+                    pst = conn.prepareStatement(sql1);
+                    rs = pst.executeQuery();
+                    
+                    if (rs.next()) {
+                        JOptionPane.showMessageDialog(null, "This Email Address Already Exists!", "Register Error", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        if(cmail.isEmpty()){
+                            try{
+                                String sql2 = "INSERT INTO customer (name, telno, email) VALUES ('"+cname+"','"+ctel+"',"+null+")";
+                                pst = conn.prepareStatement(sql2);
+                                pst.execute();
+
+                                JOptionPane.showMessageDialog(this, "Customer Registered successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                            }catch(SQLException e){
+                                JOptionPane.showMessageDialog(null, e);
+                            }finally{
+                                    try {
+                                        rs.close();
+                                        pst.close();
+                                } catch (SQLException e) {
+                                }
+                            }
+                        }else{
+                            try{
+                                String sql3 = "INSERT INTO customer (name, telno, email) VALUES ('"+cname+"','"+ctel+"','"+cmail+"')";
+                                pst = conn.prepareStatement(sql3);
+                                pst.execute();
+
+                                JOptionPane.showMessageDialog(this, "Customer Registered successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                            }catch(SQLException e){
+                                JOptionPane.showMessageDialog(null, e);
+                            }finally{
+                                    try {
+                                        
+                                        pst.close();
+                                } catch (SQLException e) {
+                                }
+                            }
+                        }
+
+                        loggedInCusname = cname;
+
+                        CashierScreen cashscreen = new CashierScreen(loggedInUsername,loggedInCusname);
+                        cashscreen.setVisible(true);
+
+                        try {
+                        conn.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(AdminLogin.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                        this.dispose();
+                    }
+
+                }
+            }catch(SQLException e){
+                    JOptionPane.showMessageDialog(null, e);
+            }finally{
+                    try {
+                        rs.close();
+                        pst.close();
+                } catch (SQLException e) {
+                }
+            }
+
+            
+            
         }
-        
-        
-        
         
     }//GEN-LAST:event_registerBtnActionPerformed
 
@@ -211,91 +304,172 @@ public class CustomerDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+       
         String stel = search_tel.getText();
         
-        try{
-            String sql = "SELECT NAME FROM CUSTOMER WHERE TELNO='"+stel+"'";
-            pst = conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-            
-            if(rs.next()){
-                
-                String name = rs.getString("name");
-                
-                loggedInCusname = name;
-                JOptionPane.showMessageDialog(this, "Customer logged successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                
-                CashierScreen cashscreen = new CashierScreen(loggedInUsername,loggedInCusname);
-                cashscreen.setVisible(true);
+        if (stel.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Telephone Number cannot be empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        }else if (stel.length() != 10) {
+            JOptionPane.showMessageDialog(null, "Telephone Number must be 10 numbers", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        }else if (!stel.matches("07\\d{8}")) {
+            JOptionPane.showMessageDialog(null, "Invalid Telephone Number", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+        
+            try{
+                String sql = "SELECT NAME,TELNO,EMAIL FROM CUSTOMER WHERE TELNO='"+stel+"'";
+                pst = conn.prepareStatement(sql);
+                rs = pst.executeQuery();
 
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(AdminLogin.class.getName()).log(Level.SEVERE, null, ex);
+                if(rs.next()){
+
+                    String name = rs.getString("name");
+                    String tel = rs.getString("telno");
+                    String email = rs.getString("email");
+
+                    cn.setText(name);
+                    cn.setEditable(false);
+                    tn.setText(tel);
+                    tn.setEditable(false);
+                    em.setText(email);
+
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "There is no Customer with this telephone number!");
                 }
 
-                this.dispose();
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "There is no Customer with this telephone number!");
+            }catch(SQLException e){
+                    JOptionPane.showMessageDialog(null, e);
+            }finally{
+                    try {
+                        rs.close();
+                        pst.close();
+                } catch (SQLException e) {
+                }
             }
-
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, e);
         }
         
         
     }//GEN-LAST:event_searchBtnActionPerformed
 
- 
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(CustomerDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(CustomerDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(CustomerDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(CustomerDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new CustomerDetails().setVisible(true);
-//            }
-//        });
-//    }
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        String stel = tn.getText();
+        
+        if(stel.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Search for Customer First", "Login Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+        
+            try{
+                String sql = "SELECT NAME,email FROM CUSTOMER WHERE TELNO='"+stel+"'";
+                pst = conn.prepareStatement(sql);
+                rs = pst.executeQuery();
 
+                if(rs.next()){
+
+                    String name = rs.getString("name");
+                    String mail = rs.getString("email");
+
+                    if(mail.equals(em.getText())){
+
+                        loggedInCusname = name;
+                        JOptionPane.showMessageDialog(this, "Customer logged successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                        CashierScreen cashscreen = new CashierScreen(loggedInUsername,loggedInCusname);
+                        cashscreen.setVisible(true);
+
+                        try {
+                            rs.close();
+                            pst.close();
+                            conn.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(AdminLogin.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                        this.dispose();
+                    }else{
+                          JOptionPane.showMessageDialog(null, "Email changed! Check again or update the new email", "Email Error", JOptionPane.ERROR_MESSAGE);
+                         }
+
+                }
+
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_loginBtnActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        String mail = em.getText();
+        String tel = tn.getText();
+        
+        if(tel.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Search for Customer First", "Update Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+        
+            if (!mail.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")){
+                JOptionPane.showMessageDialog(null, "Invalid Email", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            }else{
+                
+                try{
+                    String sql = "select email from customer where email='"+mail+"'";
+                    pst = conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+
+                    if (rs.next()) {
+                        JOptionPane.showMessageDialog(null, "This Email Address Already Exists!", "Register Error", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to change the email?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                        if (choice == JOptionPane.YES_OPTION) {
+                            try {
+                                String updatestatus = "UPDATE CUSTOMER SET EMAIL='"+mail+"' WHERE TELNO='"+tel+"'";
+                                pst = conn.prepareStatement(updatestatus);
+                                pst.executeUpdate();
+                                pst.close();
+
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }  
+                            JOptionPane.showMessageDialog(this, "Email Changed successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                            search_tel.setText("");
+                            cn.setText("");
+                            tn.setText("");
+                            em.setText("");
+                        }
+                    }
+                }catch(SQLException e){
+                        JOptionPane.showMessageDialog(null, e);
+                }finally{
+                        try {
+                            rs.close();
+                            pst.close();
+                    } catch (SQLException e) {
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_updateBtnActionPerformed
+
+ 
+    
+    
+    
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cn;
     private javax.swing.JTextField cusname;
+    private javax.swing.JTextField em;
     private javax.swing.JTextField email;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton loginBtn;
     private javax.swing.JButton registerBtn;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField search_tel;
     private javax.swing.JTextField tel;
+    private javax.swing.JTextField tn;
+    private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }

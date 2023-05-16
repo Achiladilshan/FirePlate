@@ -47,8 +47,8 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        dtime.setFont(new java.awt.Font("Helvetica Neue", 1, 48)); // NOI18N
-        jPanel1.add(dtime, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 650, 250, 40));
+        dtime.setFont(new java.awt.Font("Helvetica Neue", 1, 40)); // NOI18N
+        jPanel1.add(dtime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 650, 170, 40));
 
         aboutbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4.png"))); // NOI18N
         aboutbtn.setMaximumSize(new java.awt.Dimension(200, 200));
@@ -59,12 +59,12 @@ public class MainMenu extends javax.swing.JFrame {
                 aboutbtnActionPerformed(evt);
             }
         });
-        jPanel1.add(aboutbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 630, 160, 60));
+        jPanel1.add(aboutbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, 160, 60));
         aboutbtn.setOpaque(false);
         aboutbtn.setContentAreaFilled(false);
         aboutbtn.setBorderPainted(false);
 
-        KitchenBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.png"))); // NOI18N
+        KitchenBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kitchen.png"))); // NOI18N
         KitchenBtn.setMaximumSize(new java.awt.Dimension(200, 200));
         KitchenBtn.setMinimumSize(new java.awt.Dimension(200, 200));
         KitchenBtn.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -78,10 +78,10 @@ public class MainMenu extends javax.swing.JFrame {
         KitchenBtn.setContentAreaFilled(false);
         KitchenBtn.setBorderPainted(false);
 
-        CashierBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2.png"))); // NOI18N
+        CashierBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cashier.png"))); // NOI18N
         CashierBtn.setMaximumSize(new java.awt.Dimension(200, 200));
         CashierBtn.setMinimumSize(new java.awt.Dimension(200, 200));
-        CashierBtn.setPreferredSize(new java.awt.Dimension(200, 200));
+        CashierBtn.setPreferredSize(new java.awt.Dimension(226, 189));
         CashierBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CashierBtnActionPerformed(evt);
@@ -92,10 +92,10 @@ public class MainMenu extends javax.swing.JFrame {
         CashierBtn.setContentAreaFilled(false);
         CashierBtn.setBorderPainted(false);
 
-        AdminBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png"))); // NOI18N
-        AdminBtn.setMaximumSize(new java.awt.Dimension(200, 200));
-        AdminBtn.setMinimumSize(new java.awt.Dimension(200, 200));
-        AdminBtn.setPreferredSize(new java.awt.Dimension(200, 200));
+        AdminBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Admin.png"))); // NOI18N
+        AdminBtn.setMaximumSize(new java.awt.Dimension(188, 189));
+        AdminBtn.setMinimumSize(new java.awt.Dimension(188, 189));
+        AdminBtn.setPreferredSize(new java.awt.Dimension(188, 189));
         AdminBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdminBtnActionPerformed(evt);

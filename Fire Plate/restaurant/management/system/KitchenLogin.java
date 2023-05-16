@@ -96,7 +96,7 @@ public class KitchenLogin extends javax.swing.JFrame {
         aboutbtn.setContentAreaFilled(false);
         aboutbtn.setBorderPainted(false);
 
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kitchen's Login.png"))); // NOI18N
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kitchen Login.png"))); // NOI18N
         jPanel1.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,38 +125,59 @@ public class KitchenLogin extends javax.swing.JFrame {
         usrname = KitchenUsername.getText();
         pass = KitchenPassword.getText();
         
+        if (usrname.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Username cannot be empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        } else if (pass.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Password cannot be empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        } else if (usrname.length() > 15) {
+            JOptionPane.showMessageDialog(null, "Username should be less than 15 characters", "Username Error", JOptionPane.ERROR_MESSAGE);
+        } else if (usrname.contains(" ")) {
+            JOptionPane.showMessageDialog(null, "Username cannot contain spaces", "Username Error", JOptionPane.ERROR_MESSAGE);
+        } else if (pass.length() > 15) {
+            JOptionPane.showMessageDialog(null, "Password should be less than 15 characters", "Password Error", JOptionPane.ERROR_MESSAGE);
+        } else if (pass.contains(" ")) {
+            JOptionPane.showMessageDialog(null, "Password cannot contain spaces", "Password Error", JOptionPane.ERROR_MESSAGE);
+        } else if (pass.length() < 5) {
+            JOptionPane.showMessageDialog(null, "Password should be equal or more than 5 characters", "Password Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            
         
-        try{
-            String sql = "select username,password from employee where role='kitchen' and username='"+usrname+"' and password='"+pass+"'";
-            pst = conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-                    
-            if (rs.next()) {
-                    // Login successful
-                    JOptionPane.showMessageDialog(null, "Login successful!");
-                    KitchenScreen kitscreen = new KitchenScreen();
-                    kitscreen.setVisible(true);
+            try{
+                String sql = "select username,password from employee where role='kitchen' and username='"+usrname+"'";
+                pst = conn.prepareStatement(sql);
+                rs = pst.executeQuery();
 
-                    this.dispose();
-                    rs.close();
-                    pst.close();
-                    conn.close();
-                    
-                } else {
-                    // Login failed
-                    JOptionPane.showMessageDialog(null, "Invalid username or password.");
-                    
-                    KitchenUsername.setText("");
-                    KitchenPassword.setText("");
-                    
-                    rs.close();
-                    pst.close();
-                }
-                
-            
-            
-            
-        }catch(SQLException ex){
+                if (rs.next()) {
+                        String password = rs.getString("password");
+                        if(pass.equals(password)){
+                            JOptionPane.showMessageDialog(null, "Login successful!");
+                            KitchenScreen kitscreen = new KitchenScreen();
+                            kitscreen.setVisible(true);
+
+                            this.dispose();
+                            rs.close();
+                            pst.close();
+                            conn.close();
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Invalid Password");
+                        }
+
+                    } else {
+                        // Login failed
+                        JOptionPane.showMessageDialog(null, "Invalid Username");
+
+                        KitchenUsername.setText("");
+                        KitchenPassword.setText("");
+
+                        rs.close();
+                        pst.close();
+                    }
+
+
+
+
+            }catch(SQLException ex){
+            }
         }
     }//GEN-LAST:event_LoginBtnActionPerformed
 

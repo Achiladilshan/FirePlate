@@ -96,7 +96,7 @@ public class AdminLogin extends javax.swing.JFrame {
         aboutbtn.setContentAreaFilled(false);
         aboutbtn.setBorderPainted(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Admin's Login.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Admin Login.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,39 +147,59 @@ public class AdminLogin extends javax.swing.JFrame {
         
         usrname = AdminUsername.getText();
         pass = AdminPassword.getText();
-
         
-        try{
-            String sql = "select username,password from employee where role='admin' and username='"+usrname+"' and password='"+pass+"'";
-            pst = conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-                    
-            if (rs.next()) {
-                    // Login successful
-                    JOptionPane.showMessageDialog(null, "Login successful!");
-                    AdminScreen adscreen = new AdminScreen();
-                    adscreen.setVisible(true);
+        if (usrname.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Username cannot be empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        } else if (pass.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Password cannot be empty", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        } else if (usrname.length() > 15) {
+            JOptionPane.showMessageDialog(null, "Username should be less than 15 characters", "Username Error", JOptionPane.ERROR_MESSAGE);
+        } else if (usrname.contains(" ")) {
+            JOptionPane.showMessageDialog(null, "Username cannot contain spaces", "Username Error", JOptionPane.ERROR_MESSAGE);
+        } else if (pass.length() > 15) {
+            JOptionPane.showMessageDialog(null, "Password should be less than 15 characters", "Password Error", JOptionPane.ERROR_MESSAGE);
+        } else if (pass.contains(" ")) {
+            JOptionPane.showMessageDialog(null, "Password cannot contain spaces", "Password Error", JOptionPane.ERROR_MESSAGE);
+        } else if (pass.length() < 5) {
+            JOptionPane.showMessageDialog(null, "Password should be equal or more than 5 characters", "Password Error", JOptionPane.ERROR_MESSAGE);
+        } else {
 
-                    this.dispose();
-                    rs.close();
-                    pst.close();
-                    conn.close();
-                    
-                } else {
-                    // Login failed
-                    JOptionPane.showMessageDialog(null, "Invalid username or password.");
-                    
-                    AdminUsername.setText("");
-                    AdminPassword.setText("");
-                    
-                    rs.close();
-                    pst.close();
-                }
-                
-            
-            
-            
-        }catch(SQLException ex){
+            try{
+                String sql = "select username,password from employee where role='admin' and username='"+usrname+"'";
+                pst = conn.prepareStatement(sql);
+                rs = pst.executeQuery();
+
+                if (rs.next()) {
+                        String password = rs.getString("password");
+                        if(pass.equals(password)){
+                            JOptionPane.showMessageDialog(null, "Login successful!");
+                            AdminScreen adscreen = new AdminScreen();
+                            adscreen.setVisible(true);
+
+                            this.dispose();
+                            rs.close();
+                            pst.close();
+                            conn.close();
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Invalid Password");
+                        }
+
+                    } else {
+                        // Login failed
+                        JOptionPane.showMessageDialog(null, "Invalid Username");
+
+                        AdminUsername.setText("");
+                        AdminPassword.setText("");
+
+                        rs.close();
+                        pst.close();
+                    }
+
+
+
+
+            }catch(SQLException ex){
+            }
         }
         
     }//GEN-LAST:event_loginbtnActionPerformed

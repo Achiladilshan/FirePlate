@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
 
@@ -57,7 +59,7 @@ public class KitchenScreen extends javax.swing.JFrame {
     private void tableload(){
 
         try{
-            String sql = "SELECT oid as OrderID ,status as Status from `order` where status in ('Ordered','Preparing') and DATE(date) = CURDATE() and oid in (SELECT distinct o.oid from `order` o INNER JOIN ITEM_ORDER ior ON o.oid=ior.oid INNER JOIN ITEM i ON ior.iid=i.iid where i.catid=2)";
+            String sql = "SELECT oid as OrderID ,status as Status from `order` where status in ('Ordered','Preparing') and DATE(date) = CURDATE() and oid in (SELECT distinct o.oid from `order` o INNER JOIN ITEM_ORDER ior ON o.oid=ior.oid INNER JOIN ITEM i ON ior.iid=i.iid where i.catid=2) order by oid desc";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             
@@ -76,7 +78,7 @@ public class KitchenScreen extends javax.swing.JFrame {
     
     private void table2load(){
         try{
-            String sql = "SELECT oid as OrderID ,status as Status from `order` where status='Done' and DATE(date) = CURDATE() and oid in (SELECT distinct o.oid from `order` o INNER JOIN ITEM_ORDER ior ON o.oid=ior.oid INNER JOIN ITEM i ON ior.iid=i.iid where i.catid=2)";
+            String sql = "SELECT oid as OrderID ,status as Status from `order` where status in ('Done','Canceled')  and DATE(date) = CURDATE() and oid in (SELECT distinct o.oid from `order` o INNER JOIN ITEM_ORDER ior ON o.oid=ior.oid INNER JOIN ITEM i ON ior.iid=i.iid where i.catid=2) order by oid desc";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             
@@ -189,13 +191,11 @@ public class KitchenScreen extends javax.swing.JFrame {
         done_btn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         OrderDetailsArea = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         PreparedOrdersTable = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         CurrentOrdersTable = new javax.swing.JTable();
+        cancelBtn = new javax.swing.JButton();
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -204,7 +204,7 @@ public class KitchenScreen extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        logout_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/7.png"))); // NOI18N
+        logout_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Log Out.png"))); // NOI18N
         logout_btn.setPreferredSize(new java.awt.Dimension(150, 67));
         logout_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,26 +216,26 @@ public class KitchenScreen extends javax.swing.JFrame {
         logout_btn.setContentAreaFilled(false);
         logout_btn.setBorderPainted(false);
 
-        preparing_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/8.png"))); // NOI18N
+        preparing_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Preparing.png"))); // NOI18N
         preparing_btn.setPreferredSize(new java.awt.Dimension(140, 45));
         preparing_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 preparing_btnActionPerformed(evt);
             }
         });
-        jPanel1.add(preparing_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 590, -1, -1));
+        jPanel1.add(preparing_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 590, 160, 50));
         preparing_btn.setOpaque(false);
         preparing_btn.setContentAreaFilled(false);
         preparing_btn.setBorderPainted(false);
 
-        done_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/9.png"))); // NOI18N
+        done_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Done.png"))); // NOI18N
         done_btn.setPreferredSize(new java.awt.Dimension(140, 45));
         done_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 done_btnActionPerformed(evt);
             }
         });
-        jPanel1.add(done_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 590, -1, -1));
+        jPanel1.add(done_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 590, 160, 50));
         done_btn.setOpaque(false);
         done_btn.setContentAreaFilled(false);
         done_btn.setBorderPainted(false);
@@ -248,18 +248,6 @@ public class KitchenScreen extends javax.swing.JFrame {
         OrderDetailsArea.setEditable(false);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 160, 330, 410));
-
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel2.setText("Prepared Orders");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel3.setText("Order Details");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 120, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel4.setText("Current Orders");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, -1, -1));
 
         PreparedOrdersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -283,10 +271,6 @@ public class KitchenScreen extends javax.swing.JFrame {
             }
         });
         jScrollPane4.setViewportView(PreparedOrdersTable);
-        if (PreparedOrdersTable.getColumnModel().getColumnCount() > 0) {
-            PreparedOrdersTable.getColumnModel().getColumn(0).setResizable(false);
-            PreparedOrdersTable.getColumnModel().getColumn(1).setResizable(false);
-        }
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 290, 480));
 
@@ -315,14 +299,22 @@ public class KitchenScreen extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(CurrentOrdersTable);
-        if (CurrentOrdersTable.getColumnModel().getColumnCount() > 0) {
-            CurrentOrdersTable.getColumnModel().getColumn(0).setResizable(false);
-            CurrentOrdersTable.getColumnModel().getColumn(1).setResizable(false);
-        }
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 290, 480));
 
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/KITCHEN Screen(1).png"))); // NOI18N
+        cancelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cancel Order.png"))); // NOI18N
+        cancelBtn.setToolTipText("");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 650, 160, 50));
+        cancelBtn.setOpaque(false);
+        cancelBtn.setContentAreaFilled(false);
+        cancelBtn.setBorderPainted(false);
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Without Button.png"))); // NOI18N
         jPanel1.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -491,6 +483,82 @@ public class KitchenScreen extends javax.swing.JFrame {
         CurrentOrdersTable.getSelectionModel().clearSelection();
     }//GEN-LAST:event_PreparedOrdersTableMousePressed
 
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        int r = CurrentOrdersTable.getSelectedRow();
+        
+        if (r != -1) {
+            int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel the order?", "Confirmation", JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                String id = CurrentOrdersTable.getValueAt(r, 0).toString();
+
+                try{
+                    String sql = "SELECT oid,status from `order` where oid='"+id+"'";
+                    pst = conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+
+                    if (rs.next()) {
+                        int oid = rs.getInt("oid");
+                        String status = rs.getString("status");
+
+                        switch (status) {
+                            case "Preparing":
+                                JOptionPane.showMessageDialog(null,"Order is Preparing. Can't Cancel It!");
+                                break;
+                            case "Ordered":
+                                
+                                try{
+                                    String sql1 = "UPDATE `order` SET status='Canceled' WHERE oid='"+oid+"'";
+                                    pst = conn.prepareStatement(sql1);
+                                    pst.execute();
+
+                                }catch(Exception e){
+                                    JOptionPane.showMessageDialog(null,e);
+                                }finally{
+                                    try {
+                                        rs.close();
+                                        pst.close();
+                                    } catch (Exception e) {
+                                    }
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+
+                    }
+                    
+                    String sql2 = "SELECT oid from bill where oid='"+id+"'";
+                    pst = conn.prepareStatement(sql2);
+                    rs = pst.executeQuery();
+
+                    if (rs.next()) {
+                        int oid = rs.getInt("oid");
+
+                        String sql3 = "UPDATE bill SET total='0',bal='0',paid='0' WHERE oid='"+oid+"'";
+                        pst = conn.prepareStatement(sql3);
+                        pst.execute();
+                    }
+                    
+                    JOptionPane.showMessageDialog(null,"Order Canceled Successfully!");
+
+                }catch(SQLException e){
+                    JOptionPane.showMessageDialog(null, e);
+                }finally{
+                        try {
+                            rs.close();
+                            pst.close();
+                    } catch (SQLException e) {
+                    }
+                }
+            }
+            tableload();
+            table2load();
+            OrderDetailsArea.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Select a Current Order!");
+        }
+    }//GEN-LAST:event_cancelBtnActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -505,10 +573,8 @@ public class KitchenScreen extends javax.swing.JFrame {
     private javax.swing.JTextArea OrderDetailsArea;
     private javax.swing.JTable PreparedOrdersTable;
     private javax.swing.JLabel bg;
+    private javax.swing.JButton cancelBtn;
     private javax.swing.JButton done_btn;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
